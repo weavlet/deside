@@ -4,16 +4,16 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": "20.x"
   },
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "svelte-kit sync && vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "^3.3.1",
+    "@sveltejs/adapter-vercel": "^6.3.3",
     "@sveltejs/kit": "^2.8.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.1",
     "@tailwindcss/vite": "^4.0.0",
