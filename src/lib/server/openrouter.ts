@@ -1,4 +1,4 @@
-import { OPENROUTER_API_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 export const MODEL = 'anthropic/claude-sonnet-4.5';
 const ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
@@ -17,11 +17,12 @@ interface CallOptions {
 }
 
 function headers() {
-  if (!OPENROUTER_API_KEY) {
+  const key = env.OPENROUTER_API_KEY;
+  if (!key) {
     throw new Error('OPENROUTER_API_KEY is not set. Copy .env.example to .env and add your key.');
   }
   return {
-    Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+    Authorization: `Bearer ${key}`,
     'Content-Type': 'application/json',
     'HTTP-Referer': 'https://deside.local',
     'X-Title': 'deside'
