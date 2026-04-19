@@ -1,0 +1,71 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Fraunces', ui-serif, Georgia, serif;
+
+  --color-bg: oklch(0.145 0 0);
+  --color-surface: oklch(0.205 0 0);
+  --color-surface-2: oklch(0.24 0 0);
+  --color-border: oklch(0.29 0 0);
+  --color-muted: oklch(0.55 0 0);
+  --color-fg: oklch(0.985 0 0);
+  --color-accent: oklch(0.72 0.17 162);
+  --color-accent-fg: oklch(0.18 0.03 162);
+  --color-danger: oklch(0.7 0.19 25);
+
+  --radius-xs: 0.3rem;
+  --radius-sm: 0.45rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.9rem;
+
+  --ease-spring: cubic-bezier(0.34, 1.3, 0.5, 1);
+}
+
+@layer base {
+  html,
+  body,
+  #app {
+    height: 100%;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: color-mix(in oklch, var(--color-accent) 30%, transparent);
+    color: var(--color-fg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.fraunces {
+  font-family: var(--font-serif);
+  font-feature-settings: 'ss01', 'ss02';
+}
